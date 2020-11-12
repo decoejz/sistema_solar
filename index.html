@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+		<script>
+            const sunRatio = 30.0;
+            const earthRatio = 2.7;
+            const jupterRatio = 8.0;
+            const mercuryRatio = 1.0; // color #5d615e
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			const sungeometry = new THREE.SphereGeometry( sunRatio, 32, 32 );
+            const sunmaterial = new THREE.MeshLambertMaterial({
+                color: 0xFF1F00,
+                flatShading: true,
+                // sun light
+                emissive: 0xFFe100,
+                emissiveIntensity: 0.5,
+                });
+            const sun = new THREE.Mesh( sungeometry, sunmaterial );
+            sun.position.z = -300;
+            scene.add( sun );
+
+            //earth
+            const earthgeometry = new THREE.SphereGeometry( earthRatio, 32, 32 );
+            const earthmaterial = new THREE.MeshPhongMaterial({
+                color: 0x0000FF,
+                flatShading: true,
+                });
+            const earth = new THREE.Mesh( earthgeometry, earthmaterial );
+            sun.add( earth );
+
+            //mercury
+            const mercurygeometry = new THREE.SphereGeometry( mercuryRatio, 32, 32 );
+            const mercurymaterial = new THREE.MeshPhongMaterial({
+                color: 0x5d615e,
+                flatShading: true,
+                });
+            const mercury = new THREE.Mesh( mercurygeometry, mercurymaterial );
+            sun.add( mercury );
+
+            //jupter
+            const juptergeometry = new THREE.SphereGeometry( jupterRatio, 32, 32 );
+            const juptermaterial = new THREE.MeshPhongMaterial({
+                color: 0xFF7F00,
+                flatShading: true,
+                });
+            const jupter = new THREE.Mesh( juptergeometry, juptermaterial );
+            sun.add( jupter );
+
+
+            camera.position.z = 100;
+            camera.position.y = 50;
+
+
+            // sun light
+            const pointLight = new THREE.PointLight( 0xffffff, 1.0 );
+            pointLight.position.z = -300;
+            scene.add( pointLight );
+            
+
+            //ambiance light
+            const lightamb = new THREE.AmbientLight( 0x303030 ); // soft white light
+            scene.add( lightamb );
+            //  mudar angula para w de cada planeta
+            angleE = 0;
+            angleM = 0;
+            angleJ = 0;
+			const animate = function () {
+				requestAnimationFrame( animate );
+                angleE += 0.05;
+                angleM += 0.025;
+                angleJ += 0.0185;
+                sun.rotation.y += 0.01;
+                //earth
+                earth.rotation.y += 0.01;
+                earth.position.z = 100*Math.sin(angleE);
+                earth.position.x = 100*Math.cos(angleE);
+                //mercury
+                mercury.rotation.y += 0.01;
+                mercury.position.z = 170*Math.sin(angleM);
+                mercury.position.x = 170*Math.cos(angleM);
+                // jupter
+                jupter.rotation.y += 0.01;
+                jupter.position.z = 250*Math.sin(angleJ);
+                jupter.position.x = 250*Math.cos(angleJ);
+                
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+	</body>
+</html>
