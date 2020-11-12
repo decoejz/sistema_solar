@@ -10,10 +10,8 @@
 	<body>
 		<script src="js/three.js"></script>
 		<script>
-            const sunRatio = 30.0;
-            const earthRatio = 2.7;
-            const jupterRatio = 8.0;
-            const mercuryRatio = 1.0; // color #5d615e
+            
+            //inicio da cena e da câmera
 			const scene = new THREE.Scene();
 			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -21,11 +19,12 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
+            //sol
+            const sunRatio = 30.0;
 			const sungeometry = new THREE.SphereGeometry( sunRatio, 32, 32 );
             const sunmaterial = new THREE.MeshLambertMaterial({
                 color: 0xFF1F00,
                 flatShading: true,
-                // sun light
                 emissive: 0xFFe100,
                 emissiveIntensity: 0.5,
                 });
@@ -34,6 +33,7 @@
             scene.add( sun );
 
             //earth
+            const earthRatio = 2.7;
             const earthgeometry = new THREE.SphereGeometry( earthRatio, 32, 32 );
             const earthmaterial = new THREE.MeshPhongMaterial({
                 color: 0x0000FF,
@@ -43,6 +43,7 @@
             sun.add( earth );
 
             //mercury
+            const mercuryRatio = 1.0;
             const mercurygeometry = new THREE.SphereGeometry( mercuryRatio, 32, 32 );
             const mercurymaterial = new THREE.MeshPhongMaterial({
                 color: 0x5d615e,
@@ -52,6 +53,7 @@
             sun.add( mercury );
 
             //jupter
+            const jupterRatio = 8.0;
             const juptergeometry = new THREE.SphereGeometry( jupterRatio, 32, 32 );
             const juptermaterial = new THREE.MeshPhongMaterial({
                 color: 0xFF7F00,
@@ -60,7 +62,7 @@
             const jupter = new THREE.Mesh( juptergeometry, juptermaterial );
             sun.add( jupter );
 
-
+            // posição da câmera
             camera.position.z = 100;
             camera.position.y = 50;
 
@@ -74,10 +76,12 @@
             //ambiance light
             const lightamb = new THREE.AmbientLight( 0x303030 ); // soft white light
             scene.add( lightamb );
-            //  mudar angula para w de cada planeta
+            
+            // velocidades angulares dos planetas
             angleE = 0;
             angleM = 0;
             angleJ = 0;
+            //animação dos planetas (translação e rotação)
 			const animate = function () {
 				requestAnimationFrame( animate );
                 angleE += 0.05;
