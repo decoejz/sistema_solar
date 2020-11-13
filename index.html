@@ -89,6 +89,16 @@
             const marsRatio = 6.0;
             const mars = planet(marsRatio, 0x0000FF, 'img/2k_mars.jpg')
             sun.add( mars );
+            //phobos
+            const phobosRatio = 2.0;
+            const phobos = planet(phobosRatio, 0x0000FF, 'img/2k_moon.jpg')
+            mars.add( phobos );
+            phobos.position.x = 1.0;
+            //deimos
+            const deimosRatio = 1.5;
+            const deimos = planet(deimosRatio, 0x0000FF, 'img/2k_moon.jpg')
+            mars.add( deimos );
+            deimos.position.x = -1.0;
 
             //jupter
             const jupterRatio = 22.0;
@@ -130,6 +140,8 @@
             angleN = 0;
 
             angleMoon = 0;
+            angledeimos = 0;
+            anglephobos = 0;
 
             raioM = 60;
             raioV = 100;
@@ -140,7 +152,9 @@
             raioU = 350;
             raioN = 400;
 
-            raioMoon = 12.0;
+            raioMoon = 13.0;
+            raiodeimos = 8.0;
+            raiophobos= 7.0;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -153,17 +167,20 @@
                 angleS += 0.0183;
                 angleU += 0.0155;
                 angleN += 0.013;
-                angleMoon += 0.05;
+                angleMoon += 0.1;
 
                 sun.rotation.y += 0.01;
+
                 //mercury
                 mercury.rotation.y += 0.01;
                 mercury.position.z = raioM*Math.sin(angleM);
                 mercury.position.x = raioM*Math.cos(angleM);
+
                 //venus
                 venus.rotation.y += 0.01;
                 venus.position.z = raioV*Math.sin(angleV);
                 venus.position.x = raioV*Math.cos(angleV);
+
                 //earth
                 earth.rotation.y += 0.01;
                 earth.position.z = raioE*Math.sin(angleE);
@@ -172,10 +189,19 @@
                 moon.rotation.y += 0.01;
                 moon.position.z = raioMoon*Math.sin(angleMoon);
                 moon.position.x = raioMoon*Math.cos(angleMoon);
+
                 //mars
                 mars.rotation.y += 0.01;
                 mars.position.z = raioMars*Math.sin(angleMars);
                 mars.position.x = raioMars*Math.cos(angleMars);
+                //phobos
+                phobos.rotation.y += 0.01;
+                phobos.position.z = raiophobos*Math.sin(anglephobos);
+                phobos.position.x = raiophobos*Math.cos(anglephobos);
+                //deimos
+                deimos.rotation.y += 0.01;
+                deimos.position.z = raiodeimos*Math.sin(angledeimos);
+                deimos.position.x = raiodeimos*Math.cos(angledeimos);
                 
                 // jupter
                 jupter.rotation.y += 0.01;
