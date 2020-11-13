@@ -57,15 +57,20 @@
             pointLight.position.z = -300;
             scene.add( pointLight );
 
-            //earth
-            const earthRatio = 11.0;
-            const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
-            sun.add( earth );
-
             //mercury
             const mercuryRatio = 5.0;
             const mercury = planet(mercuryRatio, 0x5d615e, 'img/2k_mercury.jpg')
             sun.add( mercury );
+
+            //venus
+            const venusRatio = 10.0;
+            const venus = planet(mercuryRatio, 0x5d615e, 'img/2k_venus.jpg')
+            sun.add( venus );
+
+            //earth
+            const earthRatio = 11.0;
+            const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
+            sun.add( earth );
 
             //jupter
             const jupterRatio = 22.0;
@@ -73,19 +78,23 @@
             sun.add( jupter );
             
             // velocidades angulares dos planetas
-            angleE = 0;
             angleM = 0;
+            angleV = 0;
+            angleE = 0;
             angleJ = 0;
 
             raioM = 60;
+            raioV = 100;
             raioE = 130;
             raioJ = 230;
+
             //animação dos planetas (translação e rotação)
 			const animate = function () {
 				requestAnimationFrame( animate );
-                angleE += 0.05;
                 angleM += 0.025;
-                angleJ += 0.0185;
+                angleV += 0.02;
+                angleE += 0.01;
+                angleJ += 0.0085;
                 sun.rotation.y += 0.01;
                 //earth
                 earth.rotation.y += 0.01;
