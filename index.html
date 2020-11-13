@@ -82,9 +82,13 @@
             sun.add( jupter );
 
             //saturn
-            const saturnRatio = 20.0;
+            const saturnRatio = 15.0;
             const saturn = planet(saturnRatio, 0xFF7F00, 'img/2k_saturn.jpg')
             sun.add( saturn );
+            const ringgeometry = new THREE.RingGeometry( 20, 17, 50 );
+            const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
+            const ring = new THREE.Mesh( geometry, material );
+            saturn.add( ring );
             
             // velocidades angulares dos planetas
             angleM = 0;
