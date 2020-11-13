@@ -34,8 +34,10 @@
 			document.body.appendChild( renderer.domElement );
 
             // posição da câmera
-            camera.position.z = 100;
-            camera.position.y = 50;
+            camera.position.z = 130;
+            camera.position.y = 100;
+            camera.rotation.x = -0.2;
+
             
             //ambiance light
             const lightamb = new THREE.AmbientLight( 0x373030 ); // soft white light
@@ -103,7 +105,7 @@
             raioE = 130;
             raioMars = 180;
             raioJ = 230;
-            raioS = 270;
+            raioS = 290;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -113,7 +115,7 @@
                 angleE += 0.03;
                 angleMars += 0.025;
                 angleJ += 0.015;
-                angleS -= 0.01;
+                angleS += 0.005;
 
                 sun.rotation.y += 0.01;
                 //mercury
