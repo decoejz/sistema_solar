@@ -90,7 +90,7 @@
             const ringgeometry = new THREE.RingGeometry( 21.0, 16.0, 50.0 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
-            ring.rotation.y = -100.0*Math.PI/180.0;
+            ring.rotation.y = -90.0*Math.PI/180.0;
             saturn.rotation.z = 90.0*Math.PI/180.0;
             saturn.add( ring );
             ring.position.z = -5.0;
@@ -127,14 +127,14 @@
             //animação dos planetas (translação e rotação)
 			const animate = function () {
 				requestAnimationFrame( animate );
-                angleM += 0.05;
-                angleV += 0.04;
-                angleE += 0.03;
-                angleMars += 0.025;
-                angleJ += 0.015;
-                angleS -= 0.005;
-                angleU -= 0.002;
-                angleN -= 0.001;
+                angleM += 0.1;
+                angleV += 0.07;
+                angleE += 0.055;
+                angleMars += 0.04;
+                angleJ += 0.035;
+                angleS += 0.025;
+                angleU += 0.015;
+                angleN += 0.005;
 
                 sun.rotation.y += 0.01;
                 //mercury
