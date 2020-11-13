@@ -23,7 +23,7 @@
                 console.log("entrou", loaderi.load(pathTexture));
                 const earthgeometry = new THREE.SphereGeometry( size, 32, 32 );
                 const earthmaterial = new THREE.MeshPhongMaterial({
-                    color: color,
+                    // color: color,
                     map: loader.load(pathTexture),
                     flatShading: true,
                     });
@@ -47,7 +47,6 @@
             const sunRatio = 30.0;
 			const sungeometry = new THREE.SphereGeometry( sunRatio, 32, 32 );
             const sunmaterial = new THREE.MeshBasicMaterial({
-                color: 0xFF1F00,
                 map: loader.load('img/2k_sun.jpg'),
                 flatShading: true,
                 // emissive: 0xFFe100,
