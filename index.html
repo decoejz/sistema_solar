@@ -25,7 +25,7 @@
             var loader = new THREE.TextureLoader();
             const listener = new THREE.AudioListener();
             camera.add( listener );
-
+            
             // create a global audio source
             const sound = new THREE.Audio( listener );
 
@@ -108,12 +108,12 @@
             const phobosRatio = 2.0;
             const phobos = planet(phobosRatio, 0x0000FF, 'img/2k_moon.jpg')
             mars.add( phobos );
-            phobos.position.x = 2.0;
+            phobos.position.z = 2.0;
             //deimos
             const deimosRatio = 1.5;
             const deimos = planet(deimosRatio, 0x0000FF, 'img/2k_moon.jpg')
             mars.add( deimos );
-            deimos.position.x = -2.0;
+            deimos.position.z = -2.0;
 
             //jupter
             const jupterRatio = 22.0;
