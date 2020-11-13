@@ -4,8 +4,14 @@
         <meta charset="UTF-8">
 		<title>Solar System</title>
 		<style>
-			body { margin: 0; }
-			canvas { display: block; }
+            body {
+                margin: 0;
+            }
+			canvas {
+                    display: block;
+                    background: url(img/2k_stars_milky_way.jpg) no-repeat center center;
+                    background-size: cover;
+                    }
 		</style>
 	</head>
 	<body>
@@ -29,8 +35,10 @@
                 return earth;
             };
 
-			const renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
+			const renderer = new THREE.WebGLRenderer({
+                alpha: true,
+            });
+            renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
             // posição da câmera

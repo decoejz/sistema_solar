@@ -4,17 +4,34 @@
         <meta charset="UTF-8">
 		<title>Solar System</title>
 		<style>
-			body { margin: 0; }
-			canvas { display: block; }
+			body {
+                margin: 0;
+            }
+            /* #c {
+                width: 100%;
+                height: 100%;
+                display: block;
+                background: url(img/2k_stars_milky_way.jpg) no-repeat center center;
+                background-size: cover;
+            } */
+            canvas {
+                    display: block;
+                    background: url(img/2k_stars_milky_way.jpg) no-repeat center center;
+                    background-size: cover;
+                    }
 		</style>
 	</head>
 	<body>
 		<script src="js/three.js"></script>
 		<script>
-            
             //inicio da cena e da câmera
 			const scene = new THREE.Scene();
-			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            const renderer = new THREE.WebGLRenderer({
+                alpha: true,
+            });
+            renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
 
             // var loader = new THREE.TextureLoader();
             // const planet = function (size, color, pathTexture = null) {
@@ -28,10 +45,7 @@
             //     const earth = new THREE.Mesh( earthgeometry, earthmaterial );
             //     return earth;
             // };
-
-			const renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
+			// const renderer = new THREE.WebGLRenderer();
 
             // posição da câmera
             camera.position.z = 130;
