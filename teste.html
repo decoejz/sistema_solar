@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Solar System</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+		<script>
+            
+            //inicio da cena e da câmera
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            // var loader = new THREE.TextureLoader();
+            // const planet = function (size, color, pathTexture = null) {
+            //     const earthgeometry = new THREE.SphereGeometry( size, 100, 100 );
+            //     const earthmaterial = new THREE.MeshPhongMaterial({
+            //         // color: color,
+            //     // color: 0xFF1F00,
+            //         map: loader.load(pathTexture),
+            //         flatShading: true,
+            //         });
+            //     const earth = new THREE.Mesh( earthgeometry, earthmaterial );
+            //     return earth;
+            // };
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+            // posição da câmera
+            camera.position.z = 130;
+            camera.position.y = 20;
+            camera.rotation.x = -0.2;
+
+            
+            //ambiance light
+            const lightamb = new THREE.AmbientLight( 0x373030 ); // soft white light
+            scene.add( lightamb );
+
+            // //sol
+            // const sunRatio = 30.0;
+			// const sungeometry = new THREE.SphereGeometry( sunRatio, 100, 100 );
+            // const sunmaterial = new THREE.MeshBasicMaterial({
+            //     map: loader.load('img/2k_sun.jpg'),
+            //     flatShading: true,
+            //     });
+            // const sun = new THREE.Mesh( sungeometry, sunmaterial );
+            // sun.position.z = -300;
+            // scene.add( sun );
+            // // sun light
+            const pointLight = new THREE.PointLight( 0xffffff, 1.0 );
+            pointLight.position.z = -300;
+            scene.add( pointLight );
+
+            // //mercury
+            // const mercuryRatio = 5.0;
+            // const mercury = planet(mercuryRatio, 0x5d615e, 'img/2k_mercury.jpg')
+            // sun.add( mercury );
+
+            // //venus
+            // const venusRatio = 10.0;
+            // const venus = planet(venusRatio, 0x5d615e, 'img/2k_venus.jpg')
+            // sun.add( venus );
+
+            // //earth
+            // const earthRatio = 11.0;
+            // const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
+            // sun.add( earth );
+
+            // //mars
+            // const marsRatio = 6.0;
+            // const mars = planet(marsRatio, 0x0000FF, 'img/2k_mars.jpg')
+            // sun.add( mars );
+
+            // //jupter
+            // const jupterRatio = 22.0;
+            // const jupter = planet(jupterRatio, 0xFF7F00, 'img/2k_jupiter.jpg')
+            // sun.add( jupter );
+
+            //saturn
+            const saturnRatio = 10.0;
+            const saturngeometry = new THREE.SphereGeometry( saturnRatio, 100, 100 );
+            const saturnmaterial = new THREE.MeshBasicMaterial( { color: 0xF0FF00 } );
+            const saturn = new THREE.Mesh( saturngeometry, saturnmaterial );
+            scene.add( saturn );
+            const ringgeometry = new THREE.RingGeometry( 30, 17, 50 );
+            const ringmaterial = new THREE.MeshBasicMaterial( { color: 0xF0F0FF } );
+            const ring = new THREE.Mesh( ringgeometry, ringmaterial );
+            ring.rotation.y = -100*Math.PI/180;
+            saturn.rotation.z = -90*Math.PI/180;
+            // ring.rotation.y = -85*Math.PI/180;
+            saturn.add( ring );
+            renderer.render( scene, camera );
+
+
+		</script>
+	</body>
+</html>

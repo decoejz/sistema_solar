@@ -90,7 +90,8 @@
             const ringgeometry = new THREE.RingGeometry( 20, 17, 50 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
-            ring.rotation.z = 90*Math.PI/180;
+            ring.rotation.y = -100*Math.PI/180;
+            saturn.rotation.z = -90*Math.PI/180;
             saturn.add( ring );
             
             // velocidades angulares dos planetas
