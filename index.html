@@ -64,7 +64,7 @@
 
             //venus
             const venusRatio = 10.0;
-            const venus = planet(mercuryRatio, 0x5d615e, 'img/2k_venus.jpg')
+            const venus = planet(venusRatio, 0x5d615e, 'img/2k_venus.jpg')
             sun.add( venus );
 
             //earth
@@ -96,14 +96,19 @@
                 angleE += 0.01;
                 angleJ += 0.0085;
                 sun.rotation.y += 0.01;
-                //earth
-                earth.rotation.y += 0.01;
-                earth.position.z = raioE*Math.sin(angleE);
-                earth.position.x = raioE*Math.cos(angleE);
                 //mercury
                 mercury.rotation.y += 0.01;
                 mercury.position.z = raioM*Math.sin(angleM);
                 mercury.position.x = raioM*Math.cos(angleM);
+                //venus
+                venus.rotation.y += 0.01;
+                venus.position.z = raioV*Math.sin(angleV);
+                venus.position.x = raioV*Math.cos(angleV);
+                //earth
+                earth.rotation.y += 0.01;
+                earth.position.z = raioE*Math.sin(angleE);
+                earth.position.x = raioE*Math.cos(angleE);
+                
                 // jupter
                 jupter.rotation.y += 0.01;
                 jupter.position.z = raioJ*Math.sin(angleJ);
