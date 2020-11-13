@@ -35,7 +35,7 @@
 
             // posição da câmera
             camera.position.z = 130;
-            camera.position.y = 20;
+            camera.position.y = 60;
             camera.rotation.x = -0.2;
 
             
@@ -93,7 +93,7 @@
             const ringmaterial = new THREE.MeshBasicMaterial( { color: 0xF0F0FF } );
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
             ring.rotation.y = -100*Math.PI/180;
-            saturn.rotation.z = -90*Math.PI/180;
+            saturn.rotation.z = 90*Math.PI/180;
             // ring.rotation.y = -85*Math.PI/180;
             saturn.add( ring );
             renderer.render( scene, camera );
