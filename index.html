@@ -87,12 +87,23 @@
             const saturnRatio = 14.0;
             const saturn = planet(saturnRatio, 0xFF7F00, 'img/2k_saturn.jpg')
             sun.add( saturn );
-            const ringgeometry = new THREE.RingGeometry( 21, 16, 50 );
+            const ringgeometry = new THREE.RingGeometry( 21.0, 16.0, 50.0 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
-            ring.rotation.y = -100*Math.PI/180;
-            saturn.rotation.z = 90*Math.PI/180;
+            ring.rotation.y = -100.0*Math.PI/180.0;
+            saturn.rotation.z = 90.0*Math.PI/180.0;
             saturn.add( ring );
+            ring.position.y = -5.0;
+
+            //uranus
+            const uranusRatio = 16.0;
+            const uranus = planet(uranusRatio, 0xFF7F00, 'img/2k_uranus.jpg')
+            sun.add( uranus );
+
+            //neptune
+            const neptuneRatio = 16.0;
+            const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
+            sun.add( neptune );
             
             // velocidades angulares dos planetas
             angleM = 0;
@@ -101,6 +112,8 @@
             angleMars = 0;
             angleJ = 0;
             angleS = 0;
+            angleU = 0;
+            angleN = 0;
 
             raioM = 60;
             raioV = 100;
@@ -108,6 +121,8 @@
             raioMars = 180;
             raioJ = 230;
             raioS = 290;
+            raioU = 330;
+            raioN = 380;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -118,6 +133,8 @@
                 angleMars += 0.025;
                 angleJ += 0.015;
                 angleS += 0.005;
+                angleU += 0.002;
+                angleN += 0.001;
 
                 sun.rotation.y += 0.01;
                 //mercury
@@ -146,6 +163,16 @@
                 saturn.rotation.y += 0.01;
                 saturn.position.z = raioS*Math.sin(angleS);
                 saturn.position.x = raioS*Math.cos(angleS);
+
+                // uranus
+                uranus.rotation.y += 0.01;
+                uranus.position.z = raioU*Math.sin(angleU);
+                uranus.position.x = raioU*Math.cos(angleU);
+
+                // neptune
+                neptune.rotation.y += 0.01;
+                neptune.position.z = raioN*Math.sin(angleN);
+                neptune.position.x = raioN*Math.cos(angleN);
                 
 
 				renderer.render( scene, camera );
