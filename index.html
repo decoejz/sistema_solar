@@ -34,7 +34,7 @@
 			document.body.appendChild( renderer.domElement );
 
             // posição da câmera
-            camera.position.z = 180;
+            camera.position.z = 200;
             camera.position.y = 100;
             camera.rotation.x = -0.2;
 
@@ -87,7 +87,7 @@
             const saturnRatio = 14.0;
             const saturn = planet(saturnRatio, 0xFF7F00, 'img/2k_saturn.jpg')
             sun.add( saturn );
-            const ringgeometry = new THREE.RingGeometry( 21.0, 16.0, 50.0 );
+            const ringgeometry = new THREE.RingGeometry( 25.0, 16.0, 50.0 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
             ring.rotation.y = -90.0*Math.PI/180.0;
