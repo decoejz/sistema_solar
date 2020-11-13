@@ -19,11 +19,10 @@
 
             var loader = new THREE.TextureLoader();
             const planet = function (size, color, pathTexture = null) {
-                var loaderi = new THREE.TextureLoader();
-                console.log("entrou", loaderi.load(pathTexture));
                 const earthgeometry = new THREE.SphereGeometry( size, 32, 32 );
                 const earthmaterial = new THREE.MeshPhongMaterial({
                     // color: color,
+                // color: 0xFF1F00,
                     map: loader.load(pathTexture),
                     flatShading: true,
                     });
@@ -40,7 +39,7 @@
             camera.position.y = 50;
             
             //ambiance light
-            const lightamb = new THREE.AmbientLight( 0xF0F0F0 ); // soft white light
+            const lightamb = new THREE.AmbientLight( 0x303030 ); // soft white light
             scene.add( lightamb );
 
             //sol
@@ -61,17 +60,17 @@
             scene.add( pointLight );
 
             //earth
-            const earthRatio = 2.7;
+            const earthRatio = 11.0;
             const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
             sun.add( earth );
 
             //mercury
-            const mercuryRatio = 1.0;
+            const mercuryRatio = 5.0;
             const mercury = planet(mercuryRatio, 0x5d615e, 'img/2k_mercury.jpg')
             sun.add( mercury );
 
             //jupter
-            const jupterRatio = 8.0;
+            const jupterRatio = 22.0;
             const jupter = planet(jupterRatio, 0xFF7F00, 'img/2k_jupiter.jpg')
             sun.add( jupter );
             
@@ -79,6 +78,10 @@
             angleE = 0;
             angleM = 0;
             angleJ = 0;
+
+            raioM = 60;
+            raioE = 100;
+            raioJ = 200;
             //animação dos planetas (translação e rotação)
 			const animate = function () {
 				requestAnimationFrame( animate );
@@ -88,16 +91,16 @@
                 sun.rotation.y += 0.01;
                 //earth
                 earth.rotation.y += 0.01;
-                earth.position.z = 100*Math.sin(angleE);
-                earth.position.x = 100*Math.cos(angleE);
+                earth.position.z = raioE*Math.sin(angleE);
+                earth.position.x = raioE*Math.cos(angleE);
                 //mercury
                 mercury.rotation.y += 0.01;
-                mercury.position.z = 170*Math.sin(angleM);
-                mercury.position.x = 170*Math.cos(angleM);
+                mercury.position.z = raioM*Math.sin(angleM);
+                mercury.position.x = raioM*Math.cos(angleM);
                 // jupter
                 jupter.rotation.y += 0.01;
-                jupter.position.z = 250*Math.sin(angleJ);
-                jupter.position.x = 250*Math.cos(angleJ);
+                jupter.position.z = raioJ*Math.sin(angleJ);
+                jupter.position.x = raioJ*Math.cos(angleJ);
                 
 
 				renderer.render( scene, camera );
