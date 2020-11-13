@@ -80,6 +80,11 @@
             const jupterRatio = 22.0;
             const jupter = planet(jupterRatio, 0xFF7F00, 'img/2k_jupiter.jpg')
             sun.add( jupter );
+
+            //saturn
+            const saturnRatio = 20.0;
+            const saturn = planet(saturnRatio, 0xFF7F00, 'img/2k_saturn.jpg')
+            sun.add( saturn );
             
             // velocidades angulares dos planetas
             angleM = 0;
@@ -87,12 +92,14 @@
             angleE = 0;
             angleMars = 0;
             angleJ = 0;
+            angleS = 0;
 
             raioM = 60;
             raioV = 100;
             raioE = 130;
             raioMars = 180;
             raioJ = 230;
+            raioS = 270;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -102,6 +109,8 @@
                 angleE += 0.03;
                 angleMars += 0.025;
                 angleJ += 0.015;
+                angleS -= 0.01;
+
                 sun.rotation.y += 0.01;
                 //mercury
                 mercury.rotation.y += 0.01;
@@ -124,6 +133,11 @@
                 jupter.rotation.y += 0.01;
                 jupter.position.z = raioJ*Math.sin(angleJ);
                 jupter.position.x = raioJ*Math.cos(angleJ);
+
+                // saturn
+                saturn.rotation.y += 0.01;
+                saturn.position.z = raioS*Math.sin(angleS);
+                saturn.position.x = raioS*Math.cos(angleS);
                 
 
 				renderer.render( scene, camera );
