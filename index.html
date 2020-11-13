@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <meta charset="UTF-8">
 		<title>Solar System</title>
 		<style>
 			body { margin: 0; }
@@ -10,72 +11,70 @@
 	<body>
 		<script src="js/three.js"></script>
 		<script>
+            // import * as THREE from './resources/threejs/r122/build/three.module.js';
             
             //inicio da cena e da câmera
 			const scene = new THREE.Scene();
 			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
+            var loader = new THREE.TextureLoader();
+            const planet = function (size, color, pathTexture = null) {
+                var loaderi = new THREE.TextureLoader();
+                console.log("entrou", loaderi.load(pathTexture));
+                const earthgeometry = new THREE.SphereGeometry( size, 32, 32 );
+                const earthmaterial = new THREE.MeshPhongMaterial({
+                    color: color,
+                    map: loader.load(pathTexture),
+                    flatShading: true,
+                    });
+                const earth = new THREE.Mesh( earthgeometry, earthmaterial );
+                return earth;
+            };
+
 			const renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
+            // posição da câmera
+            camera.position.z = 100;
+            camera.position.y = 50;
+            
+            //ambiance light
+            const lightamb = new THREE.AmbientLight( 0xF0F0F0 ); // soft white light
+            scene.add( lightamb );
+
             //sol
             const sunRatio = 30.0;
 			const sungeometry = new THREE.SphereGeometry( sunRatio, 32, 32 );
-            const sunmaterial = new THREE.MeshLambertMaterial({
+            const sunmaterial = new THREE.MeshBasicMaterial({
                 color: 0xFF1F00,
+                map: loader.load('img/2k_sun.jpg'),
                 flatShading: true,
-                emissive: 0xFFe100,
+                // emissive: 0xFFe100,
                 emissiveIntensity: 0.5,
                 });
             const sun = new THREE.Mesh( sungeometry, sunmaterial );
             sun.position.z = -300;
             scene.add( sun );
-
-            //earth
-            const earthRatio = 2.7;
-            const earthgeometry = new THREE.SphereGeometry( earthRatio, 32, 32 );
-            const earthmaterial = new THREE.MeshPhongMaterial({
-                color: 0x0000FF,
-                flatShading: true,
-                });
-            const earth = new THREE.Mesh( earthgeometry, earthmaterial );
-            sun.add( earth );
-
-            //mercury
-            const mercuryRatio = 1.0;
-            const mercurygeometry = new THREE.SphereGeometry( mercuryRatio, 32, 32 );
-            const mercurymaterial = new THREE.MeshPhongMaterial({
-                color: 0x5d615e,
-                flatShading: true,
-                });
-            const mercury = new THREE.Mesh( mercurygeometry, mercurymaterial );
-            sun.add( mercury );
-
-            //jupter
-            const jupterRatio = 8.0;
-            const juptergeometry = new THREE.SphereGeometry( jupterRatio, 32, 32 );
-            const juptermaterial = new THREE.MeshPhongMaterial({
-                color: 0xFF7F00,
-                flatShading: true,
-                });
-            const jupter = new THREE.Mesh( juptergeometry, juptermaterial );
-            sun.add( jupter );
-
-            // posição da câmera
-            camera.position.z = 100;
-            camera.position.y = 50;
-
-
             // sun light
             const pointLight = new THREE.PointLight( 0xffffff, 1.0 );
             pointLight.position.z = -300;
             scene.add( pointLight );
-            
 
-            //ambiance light
-            const lightamb = new THREE.AmbientLight( 0x303030 ); // soft white light
-            scene.add( lightamb );
+            //earth
+            const earthRatio = 2.7;
+            const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
+            sun.add( earth );
+
+            //mercury
+            const mercuryRatio = 1.0;
+            const mercury = planet(mercuryRatio, 0x5d615e, 'img/2k_mercury.jpg')
+            sun.add( mercury );
+
+            //jupter
+            const jupterRatio = 8.0;
+            const jupter = planet(jupterRatio, 0xFF7F00, 'img/2k_jupiter.jpg')
+            sun.add( jupter );
             
             // velocidades angulares dos planetas
             angleE = 0;
