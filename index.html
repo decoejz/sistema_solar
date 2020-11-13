@@ -35,11 +35,11 @@
 			document.body.appendChild( renderer.domElement );
 
             // posição da câmera
-            camera.position.z = 100;
+            camera.position.z = 80;
             camera.position.y = 50;
             
             //ambiance light
-            const lightamb = new THREE.AmbientLight( 0x303030 ); // soft white light
+            const lightamb = new THREE.AmbientLight( 0x101010 ); // soft white light
             scene.add( lightamb );
 
             //sol
@@ -48,8 +48,6 @@
             const sunmaterial = new THREE.MeshBasicMaterial({
                 map: loader.load('img/2k_sun.jpg'),
                 flatShading: true,
-                // emissive: 0xFFe100,
-                // emissiveIntensity: 0.5,
                 });
             const sun = new THREE.Mesh( sungeometry, sunmaterial );
             sun.position.z = -300;
@@ -79,7 +77,7 @@
             angleM = 0;
             angleJ = 0;
 
-            raioM = 60;
+            raioM = 50;
             raioE = 100;
             raioJ = 200;
             //animação dos planetas (translação e rotação)
