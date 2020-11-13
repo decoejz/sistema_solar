@@ -80,6 +80,10 @@
             const earthRatio = 11.0;
             const earth = planet(earthRatio, 0x0000FF, 'img/2k_earth.jpg')
             sun.add( earth );
+            //moon
+            const moonRatio = 2.0;
+            const moon = planet(moonRatio, 0x0000FF, 'img/2k_moon.jpg')
+            earth.add( moon );
 
             //mars
             const marsRatio = 6.0;
@@ -125,6 +129,8 @@
             angleU = 0;
             angleN = 0;
 
+            angleMoon = 0;
+
             raioM = 60;
             raioV = 100;
             raioE = 130;
@@ -133,6 +139,8 @@
             raioS = 290;
             raioU = 350;
             raioN = 400;
+
+            raioMoon = 12.0;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -145,6 +153,7 @@
                 angleS += 0.0183;
                 angleU += 0.0155;
                 angleN += 0.013;
+                angleMoon += 0.05;
 
                 sun.rotation.y += 0.01;
                 //mercury
@@ -159,6 +168,10 @@
                 earth.rotation.y += 0.01;
                 earth.position.z = raioE*Math.sin(angleE);
                 earth.position.x = raioE*Math.cos(angleE);
+                //moon
+                moon.rotation.y += 0.01;
+                moon.position.z = raioMoon*Math.sin(angleMoon);
+                moon.position.x = raioMoon*Math.cos(angleMoon);
                 //mars
                 mars.rotation.y += 0.01;
                 mars.position.z = raioMars*Math.sin(angleMars);
