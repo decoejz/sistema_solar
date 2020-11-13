@@ -31,7 +31,22 @@
                 alpha: true,
             });
             renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
+            document.body.appendChild( renderer.domElement );
+            
+            const listener = new THREE.AudioListener();
+            camera.add( listener );
+
+            // create a global audio source
+            const sound = new THREE.Audio( listener );
+
+            // load a sound and set it as the Audio object's buffer
+            const audioLoader = new THREE.AudioLoader();
+            audioLoader.load( 'music/ET_Theme_Song,mp3', function( buffer ) {
+                sound.setBuffer( buffer );
+                sound.setLoop( true );
+                sound.setVolume( 0.5 );
+                sound.play();
+            });
 
             // var loader = new THREE.TextureLoader();
             // const planet = function (size, color, pathTexture = null) {
