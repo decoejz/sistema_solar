@@ -89,7 +89,7 @@
             sun.add( saturn );
             const ringgeometry = new THREE.RingGeometry( 20, 17, 50 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
-            const ring = new THREE.Mesh( geometry, material );
+            const ring = new THREE.Mesh( ringgeometry, ringmaterial );
             saturn.add( ring );
             
             // velocidades angulares dos planetas
