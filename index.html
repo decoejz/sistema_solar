@@ -121,8 +121,8 @@
             raioMars = 180;
             raioJ = 230;
             raioS = 290;
-            raioU = 330;
-            raioN = 380;
+            raioU = 350;
+            raioN = 400;
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
@@ -132,9 +132,9 @@
                 angleE += 0.03;
                 angleMars += 0.025;
                 angleJ += 0.015;
-                angleS += 0.005;
-                angleU += 0.002;
-                angleN += 0.001;
+                angleS -= 0.005;
+                angleU -= 0.002;
+                angleN -= 0.001;
 
                 sun.rotation.y += 0.01;
                 //mercury
