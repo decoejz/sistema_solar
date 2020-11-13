@@ -23,6 +23,21 @@
 			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
             var loader = new THREE.TextureLoader();
+            const listener = new THREE.AudioListener();
+            camera.add( listener );
+
+            // create a global audio source
+            const sound = new THREE.Audio( listener );
+
+            // load a sound and set it as the Audio object's buffer
+            const audioLoader = new THREE.AudioLoader();
+            audioLoader.load( 'music/ET_Theme_Song,mp3', function( buffer ) {
+                sound.setBuffer( buffer );
+                sound.setLoop( true );
+                sound.setVolume( 0.5 );
+                sound.play();
+            });
+            
             const planet = function (size, color, pathTexture = null) {
                 const earthgeometry = new THREE.SphereGeometry( size, 100, 100 );
                 const earthmaterial = new THREE.MeshPhongMaterial({
