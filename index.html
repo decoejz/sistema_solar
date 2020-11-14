@@ -240,6 +240,7 @@
                 jupter.position.z = raioJ*Math.sin(angleJ);
                 jupter.position.x = raioJ*Math.cos(angleJ);
                 for(var i = 0; i < 20; i++) {
+                    moonsJangle[i] += 0.2;
                     moonsJ[i].rotation.y += 0.01;
                     moonsJ[i].position.z = moonRatio[i]*Math.sin(moonsJangle[i]);
                     moonsJ[i].position.x = moonRatio[i]*Math.cos(moonsJangle[i]);
