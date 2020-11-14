@@ -170,7 +170,7 @@
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
             
-            // velocidades angulares dos planetas
+            // angulos dos planetas (positions)
             let angleM = 0;
             let angleV = 0;
             let angleE = 0;
@@ -274,7 +274,7 @@
                 jupter.rotation.y += 0.01;
                 jupter.position.z = raioJ*Math.sin(angleJ);
                 jupter.position.x = raioJ*Math.cos(angleJ);
-                for(var i = 0; i < 20; i++) {
+                for(var i = 0; i < 17; i++) {
                     moonsJangle[i] += moonsJvel[i];
                     moonsJ[i].rotation.y += 0.01;
                     moonsJ[i].position.z = moonsJraios[i]*Math.sin(moonsJangle[i]);
