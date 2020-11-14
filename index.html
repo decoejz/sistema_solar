@@ -121,10 +121,16 @@
             sun.add( jupter );
             // moons
             moonsJ = [];
+            moonsJraios = [];
+            moonsJangle = [];
             ratios = 1.0;
             for(var i = 0; i < 20; i++) {
+                angles += 0.1;
+                raios += 1.0;
                 ratios += 0.3;
-                moonsJ.push(planet(deimosRatio, 0x0000FF, 'img/2k_moon.jpg'))
+                moonsJ.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
+                moonsJraios.push(angles);
+                moonsJangle.push(raios);
                 jupiter.add( moonsJ );
                 moonsJ[i].position.y = -ration*10
             }
