@@ -50,6 +50,13 @@
                 return earth;
             };
 
+            const orbits = function (ratio) {
+                const geo = new THREE.CircleGeometry( ratio, 100);
+                const mat = new THREE.LineBasicMaterial({color: 0xFFFFFF });
+                const line = new THREE.Mesh( geo, mat );
+                return line;
+            }
+
 			const renderer = new THREE.WebGLRenderer({
                 alpha: true,
             });
@@ -160,6 +167,22 @@
             const neptuneRatio = 16.0;
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
+
+            // orbit line planets
+            const merLine = orbit(mercuryRatio);
+            sun.add( merLine );
+            const venLine = orbit(venusRatio);
+            sun.add( venLine );
+            const earLine = orbit(earthRatio);
+            sun.add( earLine );
+            const marLine = orbit(marsRatio);
+            sun.add( marLine );
+            const jupLine = orbit(jupterRatio);
+            sun.add( jupLine );
+            const urLine = orbit(uranusRatio);
+            sun.add( urLine );
+            const neptLine = orbit(neptuneRatio);
+            sun.add( neptLine );
             
             // velocidades angulares dos planetas
             angleM = 0;
