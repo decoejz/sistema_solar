@@ -32,12 +32,7 @@
             });
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
-            
-            document.querySelector('button').addEventListener('click', function() {
-            context.resume().then(() => {
-                console.log('Playback resumed successfully');
-            });
-            });
+        
 
             // var loader = new THREE.TextureLoader();
             // const planet = function (size, color, pathTexture = null) {
@@ -78,6 +73,13 @@
             pointLight.position.z = -300;
             scene.add( pointLight );
 
+            const orbit = function (ratio) {
+                const geo = new THREE.RingGeometry( ratio, ratio +0.5, 100);
+                const mat = new THREE.LineBasicMaterial({color: 0xFFFFFF });
+                const line = new THREE.Mesh( geo, mat );
+                return line;
+            }
+
             // //mercury
             // const mercuryRatio = 5.0;
             // const mercury = planet(mercuryRatio, 0x5d615e, 'img/2k_mercury.jpg')
@@ -109,13 +111,61 @@
             const saturnmaterial = new THREE.MeshBasicMaterial( { color: 0xF0FF00 } );
             const saturn = new THREE.Mesh( saturngeometry, saturnmaterial );
             scene.add( saturn );
-            const ringgeometry = new THREE.RingGeometry( 30, 17, 50 );
-            const ringmaterial = new THREE.MeshBasicMaterial( { color: 0xF0F0FF } );
-            const ring = new THREE.Mesh( ringgeometry, ringmaterial );
-            ring.rotation.y = -100*Math.PI/180;
-            saturn.rotation.z = 90*Math.PI/180;
+            // const ringgeometry = new THREE.RingGeometry( 30, 17, 50 );
+            // const ringmaterial = new THREE.MeshBasicMaterial( { color: 0xF0F0FF } );
+            // const ring = new THREE.Mesh( ringgeometry, ringmaterial );
+            // ring.rotation.y = -100*Math.PI/180;
+            // saturn.rotation.z = 90*Math.PI/180;
             // ring.rotation.y = -85*Math.PI/180;
-            saturn.add( ring );
+            // saturn.add( ring );
+
+            const phobosRatio = 2.0;
+            const phobosgeometry = new THREE.SphereGeometry( phobosRatio, 100, 100 );
+            const phobosmaterial = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+            const phobos = new THREE.Mesh( phobosgeometry, phobosmaterial );
+            saturn.add( phobos );
+            phobos.position.z = 2.0;
+            //deimos
+            const deimosRatio = 1.5;
+            const deimosgeometry = new THREE.SphereGeometry( deimosRatio, 100, 100 );
+            const deimosmaterial = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+            const deimos = new THREE.Mesh( deimosgeometry, deimosmaterial );
+            moonsJ = [];
+            moonsJraios = [];
+            moonsJangle = [];
+            // raios = 20.0;
+            angles = 0.12;
+            ypos = -10.0;
+            for(var i = 0; i < 5; i++) {
+                angles += 0.1;
+                ypos += 3.0;
+                let raios = Math.random() * (28.0 - 20.0) + 20.0;
+                console.log(raios);
+                var ratios = Math.random() * (2.0 - 1.0) + 1.0;
+                let deimosgeometry = new THREE.SphereGeometry( ratios, 100, 100 );
+                let deimosmaterial = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+                moonsJ.push(new THREE.Mesh( deimosgeometry, deimosmaterial ))
+                moonsJangle.push(angles);
+                moonsJraios.push(raios);
+                saturn.add( moonsJ[i] );
+                moonsJ[i].position.y = ypos;
+                moonsJ[i].position.z = moonsJraios[i]*Math.sin(moonsJangle[i]);
+                moonsJ[i].position.x = moonsJraios[i]*Math.cos(moonsJangle[i]);
+            }
+            let jupLine = orbit(moonsJraios[3]);
+            saturn.add( jupLine );
+            jupLine.rotation.x = -90.0*Math.PI/180.0;
+            saturn.add( deimos );
+            phobos.position.y = 7.0;
+            raiodeimos = 20.0;
+            raiophobos= 20.0;
+            angledeimos = 0.01;
+            anglephobos = 3.5;
+            phobos.position.z = raiophobos*Math.sin(anglephobos);
+            phobos.position.x = raiophobos*Math.cos(anglephobos);
+            deimos.position.z = raiodeimos*Math.sin(angledeimos);
+            deimos.position.x = raiodeimos*Math.cos(angledeimos);
+            // deimos.position.z = -2.0;
             renderer.render( scene, camera );
 
 
