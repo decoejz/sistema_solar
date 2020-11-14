@@ -51,7 +51,7 @@
             };
 
             const orbit = function (ratio) {
-                const geo = new THREE.RingGeometry( ratio, ratio +0.5, 100);
+                const geo = new THREE.RingGeometry( ratio, ratio + 1.0, 100);
                 const mat = new THREE.LineBasicMaterial({color: 0xFFFFFF });
                 const line = new THREE.Mesh( geo, mat );
                 return line;
