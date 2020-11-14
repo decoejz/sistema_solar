@@ -127,10 +127,10 @@
             const jupter = planet(jupterRatio, 0xFF7F00, 'img/2k_jupiter.jpg')
             sun.add( jupter );
             // moons
-            moonsJ = [];
-            moonsJraios = [];
-            moonsJangle = [];
-            ypos = -20.0;
+            const moonsJ = [];
+            const moonsJraios = [];
+            const moonsJangle = [];
+            let ypos = -20.0;
             for(var i = 0; i < 20; i++) {
                 ypos += 3.0;
                 let angles = Math.random() * (0.3 - 0.12) + 0.12;
@@ -166,56 +166,57 @@
             const neptuneRatio = 16.0;
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
-
-            // orbit line planets
-            const merLine = orbit(mercuryRatio);
-            sun.add( merLine );
-            merLine.rotation.x = -90.0*Math.PI/180.0;
-            const venLine = orbit(venusRatio);
-            sun.add( venLine );
-            venLine.rotation.x = -90.0*Math.PI/180.0;
-            const earLine = orbit(earthRatio);
-            sun.add( earLine );
-            earLine.rotation.x = -90.0*Math.PI/180.0;
-            const marLine = orbit(marsRatio);
-            sun.add( marLine );
-            marLine.rotation.x = -90.0*Math.PI/180.0;
-            const jupLine = orbit(jupterRatio);
-            sun.add( jupLine );
-            jupLine.rotation.x = -90.0*Math.PI/180.0;
-            const urLine = orbit(uranusRatio);
-            sun.add( urLine );
-            urLine.rotation.x = -90.0*Math.PI/180.0;
-            const neptLine = orbit(neptuneRatio);
-            sun.add( neptLine );
-            neptLine.rotation.x = -90.0*Math.PI/180.0;
             
             // velocidades angulares dos planetas
-            angleM = 0;
-            angleV = 0;
-            angleE = 0;
-            angleMars = 0;
-            angleJ = 0;
-            angleS = 0;
-            angleU = 0;
-            angleN = 0;
+            const angleM = 0;
+            const angleV = 0;
+            const angleE = 0;
+            const angleMars = 0;
+            const angleJ = 0;
+            const angleS = 0;
+            const angleU = 0;
+            const angleN = 0;
 
-            angleMoon = 0;
-            angledeimos = 0;
-            anglephobos = 0;
+            const angleMoon = 0;
+            const angledeimos = 0;
+            const anglephobos = 0;
 
-            raioM = 60;
-            raioV = 100;
-            raioE = 130;
-            raioMars = 180;
-            raioJ = 230;
-            raioS = 300;
-            raioU = 380;
-            raioN = 440;
+            // raio orbital dos plaetas
+            const raioM = 60;
+            const raioV = 100;
+            const raioE = 130;
+            const raioMars = 180;
+            const raioJ = 230;
+            const raioS = 300;
+            const raioU = 380;
+            const raioN = 440;
 
-            raioMoon = 13.0;
-            raiodeimos = 9.0;
-            raiophobos= 8.0;
+            const raioMoon = 13.0;
+            const raiodeimos = 9.0;
+            const raiophobos= 8.0;
+
+            // orbit line planets
+            const merLine = orbit(raioM);
+            sun.add( merLine );
+            merLine.rotation.x = -90.0*Math.PI/180.0;
+            const venLine = orbit(raioV);
+            sun.add( venLine );
+            venLine.rotation.x = -90.0*Math.PI/180.0;
+            const earLine = orbit(raioE);
+            sun.add( earLine );
+            earLine.rotation.x = -90.0*Math.PI/180.0;
+            const marLine = orbit(raioMars);
+            sun.add( marLine );
+            marLine.rotation.x = -90.0*Math.PI/180.0;
+            const jupLine = orbit(raioJ);
+            sun.add( jupLine );
+            jupLine.rotation.x = -90.0*Math.PI/180.0;
+            const urLine = orbit(raioS);
+            sun.add( urLine );
+            urLine.rotation.x = -90.0*Math.PI/180.0;
+            const neptLine = orbit(raioN);
+            sun.add( neptLine );
+            neptLine.rotation.x = -90.0*Math.PI/180.0;''
 
             //animação dos planetas (translação e rotação)
 			const animate = function () {
