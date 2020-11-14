@@ -169,18 +169,25 @@
             // orbit line planets
             const merLine = orbit(mercuryRatio);
             sun.add( merLine );
+            merLine.rotation.x = -90.0*Math.PI/180.0;
             const venLine = orbit(venusRatio);
             sun.add( venLine );
+            venLine.rotation.x = -90.0*Math.PI/180.0;
             const earLine = orbit(earthRatio);
             sun.add( earLine );
+            earLine.rotation.x = -90.0*Math.PI/180.0;
             const marLine = orbit(marsRatio);
             sun.add( marLine );
+            marLine.rotation.x = -90.0*Math.PI/180.0;
             const jupLine = orbit(jupterRatio);
             sun.add( jupLine );
+            jupLine.rotation.x = -90.0*Math.PI/180.0;
             const urLine = orbit(uranusRatio);
             sun.add( urLine );
+            urLine.rotation.x = -90.0*Math.PI/180.0;
             const neptLine = orbit(neptuneRatio);
             sun.add( neptLine );
+            neptLine.rotation.x = -90.0*Math.PI/180.0;
             
             // velocidades angulares dos planetas
             angleM = 0;
