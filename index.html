@@ -74,7 +74,7 @@
             scene.add( lightamb );
 
             //sol
-            const sunRatio = 30.0;
+            const sunRatio = 40.0;
 			const sungeometry = new THREE.SphereGeometry( sunRatio, 100, 100 );
             const sunmaterial = new THREE.MeshBasicMaterial({
                 map: loader.load('img/2k_sun.jpg'),
@@ -273,8 +273,8 @@
                 for(var i = 0; i < 20; i++) {
                     moonsJangle[i] += 0.2;
                     moonsJ[i].rotation.y += 0.01;
-                    moonsJ[i].position.z = moonRatio[i]*Math.sin(moonsJangle[i]);
-                    moonsJ[i].position.x = moonRatio[i]*Math.cos(moonsJangle[i]);
+                    moonsJ[i].position.z = moonsJraios[i]*Math.sin(moonsJangle[i]);
+                    moonsJ[i].position.x = moonsJraios[i]*Math.cos(moonsJangle[i]);
                 }
 
                 // saturn
