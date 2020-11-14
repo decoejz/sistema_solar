@@ -131,13 +131,10 @@
             moonsJ = [];
             moonsJraios = [];
             moonsJangle = [];
-            ratios = 1.0;
-            raios = 23.0;
-            angles = 0.12;
             for(var i = 0; i < 20; i++) {
-                angles += 0.1;
-                raios += 1.0;
-                ratios += 0.3;
+                let angles = Math.random() * (0.3 - 0.12) + 0.12;
+                let raios = Math.random() * (30.0 - 23.0) + 23.0;
+                let ratios = Math.random() * (2.0 - 1.0) + 1.0;
                 moonsJ.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
                 moonsJraios.push(raios);
                 moonsJangle.push(angles);
