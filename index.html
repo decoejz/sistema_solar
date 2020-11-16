@@ -180,8 +180,11 @@
             for (var i = 0; i < 20; i++) {
                 rings.push(ringSaturn(ringColors[i], sizeRing, sizeRing + 1.0));
                 sizeRing += 1.2;
+                rings[i].rotation.y = -90.0*Math.PI/180.0;
                 saturn.add(rings[i]);
+                rings[i].position.x = -1.0;
             }
+            saturn.rotation.z = 90.0*Math.PI/180.0;
 
             // moons
             const moonsSAT = [];
