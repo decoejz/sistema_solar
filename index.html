@@ -179,7 +179,7 @@
             const rings = []
             for (var i = 0; i < 18; i++) {
                 rings.push(ringSaturn(ringColors[i], sizeRing, sizeRing + 1.0));
-                sizeRing += 1.1;
+                sizeRing += 1.0;
                 rings[i].rotation.y = -90.0*Math.PI/180.0;
                 saturn.add(rings[i]);
                 rings[i].position.x = -1.0;
