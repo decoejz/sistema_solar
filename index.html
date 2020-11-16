@@ -144,7 +144,7 @@
                 moonsJvel.push(vel);
                 jupter.add( moonsJ[i] );
                 moonsJ[i].position.y = ypos;
-                moonsJ[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
+                moonsJ[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //saturn
@@ -178,7 +178,7 @@
                 moonsSATvel.push(vel);
                 saturn.add( moonsSAT[i] );
                 moonsSAT[i].position.y = ypos;
-                moonsSAT[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
+                moonsSAT[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //uranus
@@ -203,7 +203,7 @@
                 moonsUvel.push(vel);
                 uranus.add( moonsU[i] );
                 moonsU[i].position.y = ypos;
-                moonsU[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
+                moonsU[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //neptune
@@ -211,9 +211,9 @@
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
             // moons
-            const moonSRatio = 2.0;
-            const moonS = planet(moonSRatio, 0x0000FF, 'img/2k_moon.jpg')
-            neptune.add( moonS );
+            const moonNRatio = 2.0;
+            const moonN = planet(moonNRatio, 0x0000FF, 'img/2k_moon.jpg')
+            neptune.add( moonN );
 
             
             // angulos dos planetas (positions)
@@ -360,9 +360,9 @@
                 neptune.position.z = raioN*Math.sin(angleN);
                 neptune.position.x = raioN*Math.cos(angleN);
                 //moon
-                moonS.rotation.y += 0.03;
-                moonS.position.z = raioSMoon*Math.sin(angleSMoon);
-                moonS.position.x = raioSMoon*Math.cos(angleSMoon);
+                moonN.rotation.y += 0.03;
+                moonN.position.z = raioSMoon*Math.sin(angleSMoon);
+                moonN.position.x = raioSMoon*Math.cos(angleSMoon);
                 
 
 				renderer.render( scene, camera );
