@@ -242,7 +242,7 @@
             let angleN = 0;
 
             let angleMoon = 0;
-            let angleSMoon = 0;
+            let angleNMoon = 0;
             let angledeimos = 0;
             let anglephobos = 0;
 
@@ -257,7 +257,7 @@
             const raioN = 440;
 
             const raioMoon = 13.0;
-            const raioSMoon = 21.0;
+            const raioNMoon = 21.0;
             const raiodeimos = 9.0;
             const raiophobos= 8.0;
 
@@ -382,8 +382,8 @@
                 neptune.position.x = raioN*Math.cos(angleN);
                 //moon
                 moonN.rotation.y += 0.03;
-                moonN.position.z = raioSMoon*Math.sin(angleSMoon);
-                moonN.position.x = raioSMoon*Math.cos(angleSMoon);
+                moonN.position.z = raioNMoon*Math.sin(angleNMoon);
+                moonN.position.x = raioNMoon*Math.cos(angleNMoon);
                 
 
 				renderer.render( scene, camera );
