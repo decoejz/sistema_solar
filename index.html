@@ -131,20 +131,22 @@
             const moonsJraios = [];
             const moonsJangle = [];
             const moonsJvel = [];
+            const moonsJYvel = [];
             let ypos = -8.0;
             for(var i = 0; i < 4; i++) {
                 ypos += 2.5;
                 let angles = Math.random() * (0.5 - 0.12) + 0.12;
                 let vel =  Math.random() * (0.3 - 0.12) + 0.12;
+                let vely =  Math.random() * (90.0*Math.PI/180.0);
                 let raios = Math.random() * (30.0 - 24.0) + 24.0;
                 let ratios = Math.random() * (2.0 - 1.0) + 1.0;
                 moonsJ.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
                 moonsJraios.push(raios);
                 moonsJangle.push(angles);
                 moonsJvel.push(vel);
+                moonsJYvel.push(vely);
                 jupter.add( moonsJ[i] );
                 moonsJ[i].position.y = ypos;
-                moonsJ[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //saturn
@@ -178,7 +180,6 @@
                 moonsSATvel.push(vel);
                 saturn.add( moonsSAT[i] );
                 moonsSAT[i].position.y = ypos;
-                moonsSAT[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //uranus
@@ -203,7 +204,6 @@
                 moonsUvel.push(vel);
                 uranus.add( moonsU[i] );
                 moonsU[i].position.y = ypos;
-                moonsU[i].rotation.z = Math.random() * (90.0*Math.PI/180.0);
             }
 
             //neptune
@@ -331,6 +331,7 @@
                     moonsJ[i].rotation.y += 0.01;
                     moonsJ[i].position.z = moonsJraios[i]*Math.sin(moonsJangle[i]);
                     moonsJ[i].position.x = moonsJraios[i]*Math.cos(moonsJangle[i]);
+                    moonsJ[i].position.y = moonsJraios[i]*Math.cos(moonsJYvel[i]);
                 }
 
                 // saturn
