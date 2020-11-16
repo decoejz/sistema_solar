@@ -158,7 +158,6 @@
             sun.add( saturn );
             const ringgeometry = new THREE.RingGeometry( 25.0, 16.0, 50.0 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
-            // ringmaterial.rotation = (90.0*Math.PI/180.0);
             ringmaterial.rotate = 0.1;
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
             ring.rotation.y = -90.0*Math.PI/180.0;
@@ -192,7 +191,7 @@
             }
 
             //uranus
-            const uranusRatio = 16.0;
+            const uranusRatio = 10.0;
             const uranus = planet(uranusRatio, 0xFF7F00, 'img/2k_uranus.jpg')
             sun.add( uranus );
             // moons
@@ -209,7 +208,7 @@
                 let vel =  Math.random() * (0.4 - 0.12) + 0.12;
                 let anglesy = Math.random() * (0.5 - 0.12) + 0.12;
                 let vely =  Math.random() * (0.4 - 0.12) + 0.12;
-                let raios = Math.random() * (27.0 - 22.0) + 22.0;
+                let raios = Math.random() * (18.0 - 14.0) + 14.0;
                 let ratios = Math.random() * (1.6 - 0.6) + 0.6;
                 moonsU.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
                 moonsUraios.push(raios);
@@ -222,7 +221,7 @@
             }
 
             //neptune
-            const neptuneRatio = 16.0;
+            const neptuneRatio = 10.0;
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
             // moons
@@ -257,7 +256,7 @@
             const raioN = 440;
 
             const raioMoon = 13.0;
-            const raioNMoon = 21.0;
+            const raioNMoon = 14.0;
             const raiodeimos = 9.0;
             const raiophobos= 8.0;
 
