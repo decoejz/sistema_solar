@@ -159,7 +159,7 @@
             const ringgeometry = new THREE.RingGeometry( 25.0, 16.0, 50.0 );
             const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
             // ringmaterial.rotation = (90.0*Math.PI/180.0);
-            ringmaterial.repeat = 20;
+            ringmaterial.rotate = 0.1;
             const ring = new THREE.Mesh( ringgeometry, ringmaterial );
             ring.rotation.y = -90.0*Math.PI/180.0;
             saturn.rotation.z = 90.0*Math.PI/180.0;
