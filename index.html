@@ -70,7 +70,7 @@
 
             
             //ambiance light
-            const lightamb = new THREE.AmbientLight( 0x373030 ); // soft white light
+            const lightamb = new THREE.AmbientLight( 0x313131 ); // soft white light
             scene.add( lightamb );
 
             //sol
@@ -164,11 +164,49 @@
             const uranusRatio = 16.0;
             const uranus = planet(uranusRatio, 0xFF7F00, 'img/2k_uranus.jpg')
             sun.add( uranus );
+            // moons
+            const moonsU = [];
+            const moonsUraios = [];
+            const moonsUangle = [];
+            const moonsUvel = [];
+            let ypos = -15.0;
+            for(var i = 0; i < 13; i++) {
+                ypos += 2.0;
+                let angles = Math.random() * (0.5 - 0.12) + 0.12;
+                let vel =  Math.random() * (0.3 - 0.12) + 0.12;
+                let raios = Math.random() * (27.0 - 22.0) + 22.0;
+                let ratios = Math.random() * (1.6 - 0.6) + 0.6;
+                moonsU.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
+                moonsUraios.push(raios);
+                moonsUangle.push(angles);
+                moonsUvel.push(vel);
+                uranus.add( moonsU[i] );
+                moonsU[i].position.y = ypos;
+            }
 
             //neptune
             const neptuneRatio = 16.0;
             const neptune = planet(neptuneRatio, 0xFF7F00, 'img/2k_neptune.jpg')
             sun.add( neptune );
+            // moons
+            const moonsN = [];
+            const moonsNraios = [];
+            const moonsNangle = [];
+            const moonsNvel = [];
+            let ypos = -15.0;
+            for(var i = 0; i < 13; i++) {
+                ypos += 2.0;
+                let angles = Math.random() * (0.5 - 0.12) + 0.12;
+                let vel =  Math.random() * (0.3 - 0.12) + 0.12;
+                let raios = Math.random() * (27.0 - 22.0) + 22.0;
+                let ratios = Math.random() * (1.6 - 0.6) + 0.6;
+                moonsN.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
+                moonsNraios.push(raios);
+                moonsNangle.push(angles);
+                moonsNvel.push(vel);
+                neptune.add( moonsN[i] );
+                moonsN[i].position.y = ypos;
+            }
             
             // angulos dos planetas (positions)
             let angleM = 0;
@@ -214,7 +252,7 @@
             const jupLine = orbit(raioJ);
             sun.add( jupLine );
             jupLine.rotation.x = -90.0*Math.PI/180.0;
-            const urLine = orbit(raioS);
+            const urLine = orbit(raioU);
             sun.add( urLine );
             urLine.rotation.x = -90.0*Math.PI/180.0;
             const neptLine = orbit(raioN);
