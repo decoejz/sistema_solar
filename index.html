@@ -159,6 +159,26 @@
             saturn.rotation.z = 90.0*Math.PI/180.0;
             saturn.add( ring );
             ring.position.x = -1.0;
+            // moons
+            const moonsSAT = [];
+            const moonsSATraios = [];
+            const moonsSATangle = [];
+            const moonsSATvel = [];
+            ypos = -10.0;
+            for(var i = 0; i < 8; i++) {
+                ypos += 2.0;
+                let angles = Math.random() * (0.5 - 0.12) + 0.12;
+                let vel =  Math.random() * (0.3 - 0.12) + 0.12;
+                let raios = Math.random() * (27.0 - 22.0) + 22.0;
+                let ratios = Math.random() * (1.8 - 0.6) + 0.6;
+                moonsSAT.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
+                moonsSATraios.push(raios);
+                moonsSATangle.push(angles);
+                moonsSATvel.push(vel);
+                uranus.add( moonsSAT[i] );
+                moonsSAT[i].position.y = ypos;
+                moonsSAT[i].rotation.z = 90.0*Math.PI/180.0;
+            }
 
             //uranus
             const uranusRatio = 16.0;
@@ -314,6 +334,12 @@
                 saturn.rotation.y += 0.01;
                 saturn.position.z = raioS*Math.sin(angleS);
                 saturn.position.x = raioS*Math.cos(angleS);
+                for(var i = 0; i < 8; i++) {
+                    moonsSATangle[i] += moonsSATvel[i];
+                    moonsSAT[i].rotation.y += 0.01;
+                    moonsSAT[i].position.z = moonsSATraios[i]*Math.sin(moonsSATangle[i]);
+                    moonsSAT[i].position.x = moonsSATraios[i]*Math.cos(moonsSATangle[i]);
+                }
 
                 // uranus
                 uranus.rotation.y += 0.01;
