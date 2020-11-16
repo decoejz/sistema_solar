@@ -144,6 +144,7 @@
                 moonsJvel.push(vel);
                 jupter.add( moonsJ[i] );
                 moonsJ[i].position.y = ypos;
+                moonsJ[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
             }
 
             //saturn
@@ -177,7 +178,7 @@
                 moonsSATvel.push(vel);
                 saturn.add( moonsSAT[i] );
                 moonsSAT[i].position.y = ypos;
-                moonsSAT[i].rotation.z = 90.0*Math.PI/180.0;
+                moonsSAT[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
             }
 
             //uranus
@@ -202,6 +203,7 @@
                 moonsUvel.push(vel);
                 uranus.add( moonsU[i] );
                 moonsU[i].position.y = ypos;
+                moonsU[i].rotation.z = Math.random() * (90.0*Math.PI/180.0 - 0);
             }
 
             //neptune
@@ -240,7 +242,7 @@
             const raioN = 440;
 
             const raioMoon = 13.0;
-            const raioSMoon = 18.0;
+            const raioSMoon = 21.0;
             const raiodeimos = 9.0;
             const raiophobos= 8.0;
 
