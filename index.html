@@ -170,17 +170,23 @@
             const moonsSATraios = [];
             const moonsSATangle = [];
             const moonsSATvel = [];
+            const moonsSATYangle = [];
+            const moonsSATYvel = [];
             ypos = -10.0;
             for(var i = 0; i < 8; i++) {
                 ypos += 2.0;
                 let angles = Math.random() * (0.5 - 0.12) + 0.12;
                 let vel =  Math.random() * (0.3 - 0.12) + 0.12;
+                let anglesy = Math.random() * (0.5 - 0.12) + 0.12;
+                let vely =  Math.random() * (0.3 - 0.12) + 0.12;
                 let raios = Math.random() * (27.0 - 22.0) + 22.0;
                 let ratios = Math.random() * (1.8 - 0.6) + 0.6;
                 moonsSAT.push(planet(ratios, 0x0000FF, 'img/2k_moon.jpg'))
                 moonsSATraios.push(raios);
                 moonsSATangle.push(angles);
                 moonsSATvel.push(vel);
+                moonsSATYangle.push(anglesy);
+                moonsSATYvel.push(vely);
                 saturn.add( moonsSAT[i] );
                 moonsSAT[i].position.y = ypos;
             }
@@ -344,10 +350,11 @@
                 saturn.position.x = raioS*Math.cos(angleS);
                 for(var i = 0; i < 8; i++) {
                     moonsSATangle[i] += moonsSATvel[i];
+                    moonsSATYangle[i] += moonsSATYvel[i];
                     moonsSAT[i].rotation.y += 0.01;
                     moonsSAT[i].position.z = moonsSATraios[i]*Math.sin(moonsSATangle[i]);
                     moonsSAT[i].position.x = moonsSATraios[i]*Math.cos(moonsSATangle[i]);
-                    moonsSAT[i].position.y = moonsSATraios[i]*Math.cos(moonsSATangle[i]);
+                    moonsSAT[i].position.y = moonsSATraios[i]*Math.cos(moonsSATYangle[i]);
                 }
 
                 // uranus
