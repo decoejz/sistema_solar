@@ -57,6 +57,13 @@
                 return line;
             }
 
+            const ringSaturn = function ( color, sizeIn, sizeOut ) {
+                const ringgeometry = new THREE.RingGeometry( sizeOut, sizeIn, 50.0 );
+                const ringmaterial = new THREE.MeshBasicMaterial( { color } );
+                const ring = new THREE.Mesh( ringgeometry, ringmaterial );
+                return ring;
+            }
+
 			const renderer = new THREE.WebGLRenderer({
                 alpha: true,
             });
@@ -156,14 +163,26 @@
             const saturnRatio = 14.0;
             const saturn = planet(saturnRatio, 0xFF7F00, 'img/2k_saturn.jpg')
             sun.add( saturn );
-            const ringgeometry = new THREE.RingGeometry( 25.0, 16.0, 50.0 );
-            const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
-            ringmaterial.rotate = 0.1;
-            const ring = new THREE.Mesh( ringgeometry, ringmaterial );
-            ring.rotation.y = -90.0*Math.PI/180.0;
-            saturn.rotation.z = 90.0*Math.PI/180.0;
-            saturn.add( ring );
-            ring.position.x = -1.0;
+            //ring
+            // const ringgeometry = new THREE.RingGeometry( 25.0, 16.0, 50.0 );
+            // const ringmaterial = new THREE.MeshBasicMaterial( { map: loader.load('img/2k_saturn_ring.png') } );
+            // ringmaterial.rotate = 0.1;
+            // const ring = new THREE.Mesh( ringgeometry, ringmaterial );
+            // ring.rotation.y = -90.0*Math.PI/180.0;
+            // saturn.rotation.z = 90.0*Math.PI/180.0;
+            // saturn.add( ring );
+            // ring.position.x = -1.0;
+
+            //new ring
+            let sizeRing = 16.0;
+            const ringColors = ['#60605C', '#60605C', '#60605C', '#60605C', '#60605C', '#60605C', '#4B4C5F', '#4B4C5F', '#4B4C5F', '#57585F', '#57585F', '#57585F', '#57585F', '#57585F', '#57585F', '#282928', '#282928', '#282928', '#282928', '#282928']
+            const rings = []
+            for (var i = 0; i < 20; i++) {
+                rings.push(ringSaturn(ringColors[i], sizeRing, sizeRing + 1.0));
+                sizeRing += 1.2;
+                saturn.add(rings[i]);
+            }
+
             // moons
             const moonsSAT = [];
             const moonsSATraios = [];
@@ -245,11 +264,11 @@
             let angledeimos = 0;
             let anglephobos = 0;
 
-            // raio orbital dos plaetas
+            // raio orbital dos planetas
             const raioM = 50;
             const raioV = 80;
-            const raioE = 100;
-            const raioMars = 130;
+            const raioE = 120;
+            const raioMars = 160;
 
             const raioJ = 230;
             const raioS = 300;
