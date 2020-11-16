@@ -283,7 +283,7 @@
                 angleS += 0.0183;
                 angleU += 0.0155;
                 angleN += 0.013;
-                angleMoon += 0.1;
+                angleMoon += 0.3;
                 angledeimos += 0.15;
                 anglephobos += 0.1;
                 angleSMoon += 0.03;
@@ -342,6 +342,7 @@
                     moonsSAT[i].rotation.y += 0.01;
                     moonsSAT[i].position.z = moonsSATraios[i]*Math.sin(moonsSATangle[i]);
                     moonsSAT[i].position.x = moonsSATraios[i]*Math.cos(moonsSATangle[i]);
+                    moonsSAT[i].position.y = moonsSATraios[i]*Math.cos(moonsSATangle[i]);
                 }
 
                 // uranus
