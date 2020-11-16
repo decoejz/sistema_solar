@@ -174,10 +174,10 @@
             // ring.position.x = -1.0;
 
             //new ring
-            let sizeRing = 16.0;
-            const ringColors = ['#60605C', '#60605C', '#60605C', '#60605C', '#60605C', '#60605C', '#4B4C5F', '#4B4C5F', '#4B4C5F', '#57585F', '#57585F', '#57585F', '#57585F', '#57585F', '#57585F', '#282928', '#282928', '#282928', '#282928', '#282928']
+            let sizeRing = 18.0;
+            const ringColors = ['#60605C', '#60605C', '#60605C', '#4B4C5F', '#4B4C5F', '#4B4C5F', '#57585F', '#57585F', '#282928', '#282928', '#282928', '#282928']
             const rings = []
-            for (var i = 0; i < 18; i++) {
+            for (var i = 0; i < 13; i++) {
                 rings.push(ringSaturn(ringColors[i], sizeRing, sizeRing + 1.0));
                 sizeRing += 1.0;
                 rings[i].rotation.y = -90.0*Math.PI/180.0;
